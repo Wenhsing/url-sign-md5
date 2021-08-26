@@ -1,0 +1,30 @@
+{
+    "name": "wenhsing/url-sign-md5",
+    "description": "Url Sign",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Wenhsing",
+            "email": "wenhsing@qq.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "nesbot/carbon": "^2.40"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Wenhsing\\UrlSign\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Wenhsing\\UrlSign\\Laravel\\Providers\\UrlSignProvider"
+            ]
+        }
+    }
+}
