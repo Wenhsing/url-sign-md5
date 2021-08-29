@@ -20,7 +20,7 @@ composer remove wenhsing/url-sign-md5
 
 ## 使用
 
-打开 `app/Http/Kernel.php` 文件，将 `UrlSignMiddleware` 中间件添加到 `$middlewareGroups` 的 `url` 字段下:
+打开 `app/Http/Kernel.php` 文件，将 `UrlSignMiddleware` 中间件添加到 `$middlewareGroups` 的对应字段下字段下:
 
 ```php
 protected $middlewareGroups = [
@@ -40,6 +40,25 @@ protected $middleware = [
     \Wenhsing\UrlSign\Laravel\Middleware\UrlSignMiddleware::class,
     // 其他中间件
 ];
+```
+
+如果你想要自定义验证失败后如何返回，可以通过继承 `\Wenhsing\UrlSign\Laravel\Middleware\UrlSignMiddleware` 类，然后重写 `errorResponse` 方法，然后将上面的添加的中间件替换成你创建的：
+
+```php
+<?php
+
+namespace App\Http\Middleware;
+
+use Wenhsing\UrlSign\Laravel\Middleware\UrlSignMiddleware;
+
+class VerifySign extends UrlSignMiddleware
+{
+    public function errorResponse($request, Closure $next)
+    {
+        //
+    }
+}
+
 ```
 
 ## 配置
